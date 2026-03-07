@@ -1,0 +1,52 @@
+{
+  "version": 2,
+  "dgSpecHash": "k4zHpKvWgeQ=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\ThinkPad\\source\\repos\\tggargamel\\tggargamel.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ThinkPad\\.nuget\\packages\\htmlagilitypack\\1.12.4\\htmlagilitypack.1.12.4.nupkg.sha512",
+    "C:\\Users\\ThinkPad\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",
+    "C:\\Users\\ThinkPad\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\8.0.0\\microsoft.extensions.configuration.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\ThinkPad\\.nuget\\packages\\microsoft.extensions.configuration.binder\\8.0.0\\microsoft.extensions.configuration.binder.8.0.0.nupkg.sha512",
+    "C:\\Users\\ThinkPad\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\ThinkPad\\.nuget\\packages\\microsoft.extensions.options\\8.0.0\\microsoft.extensions.options.8.0.0.nupkg.sha512",
+    "C:\\Users\\ThinkPad\\.nuget\\packages\\microsoft.extensions.options.configurationextensions\\8.0.0\\microsoft.extensions.options.configurationextensions.8.0.0.nupkg.sha512",
+    "C:\\Users\\ThinkPad\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512",
+    "C:\\Users\\ThinkPad\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.1\\microsoft.netcore.platforms.1.1.1.nupkg.sha512",
+    "C:\\Users\\ThinkPad\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
+    "C:\\Users\\ThinkPad\\.nuget\\packages\\microsoft.playwright\\1.58.0\\microsoft.playwright.1.58.0.nupkg.sha512",
+    "C:\\Users\\ThinkPad\\.nuget\\packages\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
+    "C:\\Users\\ThinkPad\\.nuget\\packages\\runtime.native.system.net.http\\4.3.0\\runtime.native.system.net.http.4.3.0.nupkg.sha512",
+    "C:\\Users\\ThinkPad\\.nuget\\packages\\runtime.native.system.security.cryptography.openssl\\4.3.2\\runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",
+    "C:\\Users\\ThinkPad\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512",
+    "C:\\Users\\ThinkPad\\.nuget\\packages\\system.net.http\\4.3.4\\system.net.http.4.3.4.nupkg.sha512",
+    "C:\\Users\\ThinkPad\\.nuget\\packages\\system.text.json\\10.0.3\\system.text.json.10.0.3.nupkg.sha512",
+    "C:\\Users\\ThinkPad\\.nuget\\packages\\telegram.bot\\22.9.5.3\\telegram.bot.22.9.5.3.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1510",
+      "level": "Warning",
+      "message": "PackageReference System.Text.Json не будет урезано. Рассмотрите возможность удаления этого пакета из зависимостей, так как он, вероятно, не требуется.",
+      "projectPath": "C:\\Users\\ThinkPad\\source\\repos\\tggargamel\\tggargamel.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\ThinkPad\\source\\repos\\tggargamel\\tggargamel.csproj",
+      "libraryId": "System.Text.Json",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    },
+    {
+      "code": "NU1510",
+      "level": "Warning",
+      "message": "PackageReference System.Net.Http не будет урезано. Рассмотрите возможность удаления этого пакета из зависимостей, так как он, вероятно, не требуется.",
+      "projectPath": "C:\\Users\\ThinkPad\\source\\repos\\tggargamel\\tggargamel.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\ThinkPad\\source\\repos\\tggargamel\\tggargamel.csproj",
+      "libraryId": "System.Net.Http",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    }
+  ]
+}
