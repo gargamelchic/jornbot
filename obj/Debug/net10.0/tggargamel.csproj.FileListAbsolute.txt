@@ -392,3 +392,4 @@ C:\Users\ThinkPad\source\repos\tggargamel\bin\Debug\net10.0\playwright.ps1
 C:\Users\ThinkPad\source\repos\tggargamel\bin\Debug\net10.0\HtmlAgilityPack.dll
 C:\Users\ThinkPad\source\repos\tggargamel\bin\Debug\net10.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\ThinkPad\source\repos\tggargamel\bin\Debug\net10.0\Microsoft.Playwright.dll
+C:\Users\ThinkPad\source\repos\tggargamel\obj\Debug\net10.0\tggargamel.sourcelink.json
