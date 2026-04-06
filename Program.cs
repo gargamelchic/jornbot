@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
@@ -11,10 +13,15 @@ using Telegram.Bot.Polling;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 using Telegram.Bot.Types.ReplyMarkups;
+using tggargamel.Data;
+using tggargamel.Models;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+
+
 namespace TopAcademyBot
 {
+    
     //Contacts
     public class Contacts
     {
@@ -184,15 +191,7 @@ namespace TopAcademyBot
         public string[] emails { get; set; }
     }
 
-    //student
-    public class student
-    {
-        public int amount { get; set; }
-        public int id { get; set; }
-        public string full_name { get; set; }
-        public string photo_path { get; set; }
-        public int position { get; set; }
-    }
+    
     //Payload
     public class Payload
     {
@@ -282,14 +281,30 @@ namespace TopAcademyBot
             long chatId = message.Chat.Id;
             if (!sessions.ContainsKey(chatId)) sessions[chatId] = new UserSession();
             UserSession user = sessions[chatId];
-
+            
 
             if (messageText == "/start")
             {
-                user.Step = "WaitingLogin";
-                await botClient.SendMessage(chatId, "Введите ваш логин:");
-                await botClient.SendMessage(AdminId, "");
-                return;
+                using (var db = new AppDbContext())
+                {
+                    db.Database.EnsureCreated();
+                    var student = db.Students.FirstOrDefault(s => s.TgId == chatId);
+                    if (student != null)
+                    {
+                        Console.WriteLine("Студент уже есть в базе!");
+                        user.Login = student.Login;
+                        user.Password = student.Password;
+                        user.Step = "WaitingPass";
+                    }
+                    else
+                    {
+                        Console.WriteLine("Студента нет, можно добавлять.");
+                        user.Step = "WaitingLogin";
+                        await botClient.SendMessage(chatId, "Введите ваш логин:");
+                        await botClient.SendMessage(AdminId, "");
+                        return;
+                    }
+                }
             }
             switch (user.Step)
             {
@@ -300,16 +315,38 @@ namespace TopAcademyBot
                     break;
 
                 case "WaitingPass":
-                    user.Password = messageText;
-                    user.Step = "Authorized";
-                    var menu = new InlineKeyboardMarkup(new[]
+                    if(user.Password == null)
                     {
-                        new[] { InlineKeyboardButton.WithCallbackData("📅 Расписание на завтра", "schedule") },
-                        new[] { InlineKeyboardButton.WithCallbackData("👤 Профиль", "profile") },
-                        new[] { InlineKeyboardButton.WithCallbackData("📞 Контакты", "contacts") }
-                    });
-                    await botClient.SendMessage(chatId, "Вы в основном меню. Выберите функцию...", replyMarkup: menu);
+                        user.Password = messageText;
+                        using (var db = new AppDbContext())
+                        {
+                            db.Database.EnsureCreated();
+
+                            var student = new Student
+                            {
+                                TgId = chatId,
+                                Password = user.Password,
+                                Login = user.Login,
+                            };
+
+                            db.Students.Add(student);
+                            db.SaveChanges();
+                            Console.WriteLine("Студент успешно добавлен!");
+                        }
+                    }
+                    else
+                    {
+                        var menu = new InlineKeyboardMarkup(new[]
+                        {
+                            new[] { InlineKeyboardButton.WithCallbackData("📅 Расписание на завтра", "schedule") },
+                            new[] { InlineKeyboardButton.WithCallbackData("👤 Профиль", "profile") },
+                            new[] { InlineKeyboardButton.WithCallbackData("📞 Контакты", "contacts") }
+                        });
+                        await botClient.SendMessage(chatId, "Вы в основном меню. Выберите функцию...", replyMarkup: menu);
+                    }
+                    user.Step = "Authorized";
                     break;
+
 
                 case "Authorized":
                     break;
